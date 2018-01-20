@@ -1,0 +1,30 @@
+function dataClassify()
+load('data_batch_1_pca.mat');
+data1 = double(data);
+labels1 = double(labels);
+load('data_batch_2_pca.mat');
+data2 = double(data);
+labels2 = double(labels);
+load('data_batch_3_pca.mat');
+data3 = double(data);
+labels3 = double(labels);
+data = [data1; data2; data3];
+labels = [labels1; labels2; labels3];
+save('has_label_train_batch_1_3.mat','data','labels');
+clear data1 data2 data3 data labels labels1 labels2 labels3;
+load('data_batch_4_pca.mat');
+data4 = double(data);
+labels4 = double(labels);
+load('data_batch_5_pca.mat');
+data5 = double(data);
+labels5 = double(labels);
+data = [data4; data5];
+labels = [labels4; labels5];
+save('no_label_train_batch_4_5.mat','data','labels');
+clear data4 data5 data labels labels4 labels5;
+load('test_batch_pca.mat');
+testdata = double(data);
+testlabels = double(labels);
+save('self_test_batch.mat','data','labels');
+clear testdata testlabels data labels;
+end
